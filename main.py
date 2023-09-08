@@ -83,8 +83,6 @@ def post_new_cafe():
     db.session.commit()
     return jsonify(response={"success": "Successfully added the new cafe."})
 
-# Updating the price of a cafe based on a particular id:
-# http://127.0.0.1:5000/update-price/CAFE_ID?new_price=£5.67
 @app.route("/update-price/<int:cafe_id>", methods=["PATCH"])
 def patch_new_price(cafe_id):
     new_price = request.args.get("new_price")
@@ -96,7 +94,6 @@ def patch_new_price(cafe_id):
     else:
         return jsonify(error={"Not Found": "Sorry a cafe with that id was not found in the database."}), 404
 
-# Deletes a cafe with a particular id. Change the request type to "Delete" in Postman
 @app.route("/report-closed/<int:cafe_id>", methods=["DELETE"])
 def delete_cafe(cafe_id):
     api_key = request.args.get("api-key")
